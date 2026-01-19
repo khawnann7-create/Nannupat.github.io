@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design Thinking - หลักสูตรการออกแบบความคิด</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+            margin-bottom: 5px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        nav {
+            background-color: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: #667eea;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+        
+        nav a:hover {
+            color: #764ba2;
+            border-bottom: 2px solid #764ba2;
+        }
+        
+        .intro-section {
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .intro-section h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 2em;
+        }
+        
+        .intro-section p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+            color: #555;
+        }
+        
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .module-card {
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 5px solid #667eea;
+        }
+        
+        .module-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+        }
+        
+        .module-card h3 {
+            color: #764ba2;
+            margin-bottom: 12px;
+            font-size: 1.5em;
+        }
+        
+        .module-card p {
+            color: #666;
+            margin-bottom: 10px;
+        }
+        
+        .module-card ul {
+            list-style-position: inside;
+            color: #777;
+            padding-left: 15px;
+        }
+        
+        .module-card li {
+            margin-bottom: 8px;
+        }
+        
+        .learning-outcomes {
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .learning-outcomes h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+        
+        .learning-outcomes ol {
+            margin-left: 30px;
+            color: #555;
+        }
+        
+        .learning-outcomes li {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        
+        .cta-section h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        
+        .cta-button {
+            background-color: white;
+            color: #667eea;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 700;
+            transition: background-color 0.3s ease;
+            display: inline-block;
+            margin: 10px 5px;
+        }
+        
+        .cta-button:hover {
+            background-color: #f0f0f0;
+        }
+        
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+        }
+        
+        footer p {
+            margin-bottom: 5px;
+        }
+        
+        .back-link {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        
+        .back-link a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .back-link a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+            
+            nav ul {
+                gap: 15px;
+            }
+            
+            .modules-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .intro-section,
+            .learning-outcomes,
+            .cta-section {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🎨 Design Thinking</h1>
+        <p>หลักสูตรการออกแบบความคิด ปี 2026</p>
+        <p>ยาว Nannapat Fuangrod</p>
+    </header>
+    
+    <div class="container">
+        <div class="back-link">
+            <a href="index.html">← กลับไปยังหน้าแรก</a>
+        </div>
+        
+        <nav>
+            <ul>
+                <li><a href="#about">เกี่ยวกับ</a></li>
+                <li><a href="#modules">หัวข้อการศึกษา</a></li>
+                <li><a href="#outcomes">ผลการเรียนรู้</a></li>
+                <li><a href="#contact">ติดต่อ</a></li>
+            </ul>
+        </nav>
+        
+        <section class="intro-section" id="about">
+            <h2>เกี่ยวกับหลักสูตร</h2>
+            <p>
+                Design Thinking (ความคิดแบบการออกแบบ) เป็นกระบวนการแก้ปัญหาแบบสร้างสรรค์ที่เน้นการทำความเข้าใจผู้ใช้งาน 
+                ด้วยความเห็นอกเห็นใจ การทดลองสร้างโปรแกรมต้นแบบ และการสร้างสรรค์แนวคิดใหม่ๆ
+            </p>
+            <p>
+                หลักสูตรนี้ออกแบบมาเพื่อให้ผู้เรียนได้ศึกษาและปฏิบัติตามขั้นตอน 5 ขั้นตอนของ Design Thinking 
+                ตั้งแต่ Empathize, Define, Ideate, Prototype จนถึง Test
+            </p>
+            <p>
+                ผ่านการศึกษาหลักสูตรนี้ คุณจะได้รับความเข้าใจเชิงลึกเกี่ยวกับการแก้ปัญหาและสามารถนำไปประยุกต์ใช้กับงานจริง
+            </p>
+        </section>
+        
+        <section id="modules">
+            <h2 style="color: #667eea; font-size: 2em; margin-bottom: 30px;">หัวข้อการศึกษา</h2>
+            <div class="modules-grid">
+                <div class="module-card">
+                    <h3>1. Empathize</h3>
+                    <p>ขั้นตอนแรกของการเข้าใจผู้ใช้งาน</p>
+                    <ul>
+                        <li>การศึกษาผู้ใช้งาน</li>
+                        <li>เทคนิคการสัมภาษณ์</li>
+                        <li>การสังเกตพฤติกรรม</li>
+                        <li>Empathy Mapping</li>
+                    </ul>
+                </div>
+                
+                <div class="module-card">
+                    <h3>2. Define</h3>
+                    <p>การระบุปัญหาและความต้องการ</p>
+                    <ul>
+                        <li>วิเคราะห์ข้อมูลที่รวบรวม</li>
+                        <li>นิยามปัญหาแบบ Point of View</li>
+                        <li>How Might We (HMW)</li>
+                        <li>สร้างปัญหาคำถาม</li>
+                    </ul>
+                </div>
+                
+                <div class="module-card">
+                    <h3>3. Ideate</h3>
+                    <p>สร้างสรรค์แนวคิดและแก้ปัญหา</p>
+                    <ul>
+                        <li>Brainstorming</li>
+                        <li>Mind Mapping</li>
+                        <li>Random Input</li>
+                        <li>Concept Combining</li>
+                    </ul>
+                </div>
+                
+                <div class="module-card">
+                    <h3>4. Prototype</h3>
+                    <p>สร้างต้นแบบของแนวคิด</p>
+                    <ul>
+                        <li>Low-Fidelity Prototyping</li>
+                        <li>High-Fidelity Prototyping</li>
+                        <li>สร้างแบบจำลอง</li>
+                        <li>Rapid Prototyping</li>
+                    </ul>
+                </div>
+                
+                <div class="module-card">
+                    <h3>5. Test</h3>
+                    <p>ทดสอบและรับฟีดแบ็ค</p>
+                    <ul>
+                        <li>ทดสอบกับผู้ใช้งาน</li>
+                        <li>รวบรวมฟีดแบ็ค</li>
+                        <li>วิเคราะห์ผลการทดสอบ</li>
+                        <li>ปรับปรุงและวนรอบ</li>
+                    </ul>
+                </div>
+                
+                <div class="module-card">
+                    <h3>Project</h3>
+                    <p>โครงการด้วย Design Thinking</p>
+                    <ul>
+                        <li>ทำโครงการจริง</li>
+                        <li>ประยุกต์ใช้ทั้ง 5 ขั้นตอน</li>
+                        <li>นำเสนอผลลัพธ์</li>
+                        <li>รับการประเมิน</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <section class="learning-outcomes" id="outcomes">
+            <h2>ผลการเรียนรู้ที่คาดหวัง</h2>
+            <ol>
+                <li><strong>ทำความเข้าใจในกระบวนการ Design Thinking</strong> - สามารถอธิบายขั้นตอนทั้ง 5 ขั้นตอนและความสำคัญของแต่ละขั้นตอน</li>
+                <li><strong>พัฒนาทักษะการเข้าใจผู้ใช้งาน</strong> - สามารถทำการสัมภาษณ์ สังเกตพฤติกรรม และสร้าง Empathy Mapping ได้อย่างมีประสิทธิผล</li>
+                <li><strong>สามารถระบุและนิยามปัญหา</strong> - สามารถวิเคราะห์ข้อมูลและกำหนดปัญหาเป็น Point of View ได้</li>
+                <li><strong>สร้างสรรค์แนวคิดแก้ปัญหา</strong> - ใช้เทคนิกต่างๆ เพื่อสร้างแนวคิดจำนวนมาก</li>
+                <li><strong>สร้างต้นแบบและทดสอบ</strong> - สามารถสร้างต้นแบบและทดสอบกับผู้ใช้งานจริง</li>
+                <li><strong>ปฏิบัติในโครงการจริง</strong> - สามารถประยุกต์ใช้ Design Thinking ในการแก้ปัญหาในชีวิตจริง</li>
+            </ol>
+        </section>
+        
+        <section class="cta-section">
+            <h2>เริ่มต้นการเรียนรู้ Design Thinking</h2>
+            <p style="margin-bottom: 20px;">กระบวนการแก้ปัญหาแบบสร้างสรรค์ที่เปลี่ยนแปลงวิธีการคิด</p>
+            <a href="#about" class="cta-button">เรียนเพิ่มเติม</a>
+            <a href="index.html" class="cta-button">กลับหน้าแรก</a>
+        </section>
+    </div>
+    
+    <footer id="contact">
+        <p>&copy; 2026 Design Thinking Course - Nannapat Fuangrod</p>
+        <p>สถาบันเทคโนโลยีสารสนเทศ มหาวิทยาลัยเชียงใหม่</p>
+    </footer>
+</body>
+</html>
